@@ -1,0 +1,19 @@
+.typed-text {
+    white-space: nowrap;
+    color: var(--bold-text-color);
+    display: inline-block;
+  }
+    
+  .blink {
+    width: 10px;
+    color: yellow;
+    animation: blink 1.2s step-end infinite !important;
+  }
+  
+  @keyframes blink {
+    50% {
+      background-color: transparent;
+      opacity: 0;
+    }
+  }
+  

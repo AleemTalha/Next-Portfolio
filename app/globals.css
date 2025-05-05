@@ -1,26 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f3f6fa;        /* Soft bluish white */
+  --foreground: #101820;        /* Deep charcoal text */
+  --navbar-bg: #d6e4f0;         /* Light steel blue */
+  --button-bg: #004e64;         /* Dark teal */
+  --button-text: #ffffff;       /* Always white */
+  --text-color: #1b2a3a;        /* Rich navy slate */
+ --bold-text-color: #002022;  /* Google Blue for highlights */
+  --card-bg: #ffffff;           /* Pure white cards */
+  --border-color: #b0c5d1;      /* Light steel blue border */
+  --highlight: #00152d;         /* Vivid bright blue */
+  --link-color: #003459;        /* Deep sea blue */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+body.theme-dark {
+  --background: #0f1724;        /* Midnight navy */
+  --foreground: #e5edf5;        /* Frosty silver blue */
+  --navbar-bg: #1a2533;         /* Slightly lifted navy */
+  --button-bg: #00838f;         /* Cyan teal */
+  --button-text: #e0f7fa;       /* Aqua white */
+  --text-color: #b0bec5;        /* Soft cool gray */
+  --bold-text-color: #4dd0e1;   /* Light cyan accent */
+  --card-bg: #202a37;           /* Muted dark card */
+  --border-color: #334155;      /* Soft outline blue-gray */
+  --highlight: #6c6c6c;         /* Clean cyan */
+  --link-color: #ffffff;        /* Crisp white */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+
+* {
+  font-family: 'Raleway', sans-serif !important; /* Apply Raleway font to all elements */
+  cursor: none;
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  cursor: none;
 }
+
+h1, h2, h3, h4, p, a, button, span {
+  font-family: 'Raleway', sans-serif; /* Ensure consistency across all text elements */
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--highlight);
+}
+
+.navbar {
+  background-color: var(--navbar-bg);
+  color: var(--text-color);
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+  color: var(--text-color);
+}
+
+.navbar a:hover {
+  color: var(--highlight);
+}
+
+.card-dark,
+.card-light {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.card-dark {
+  border-color: var(--bold-text-color);
+}
+
+.card-light {
+  border-color: var(--highlight);
+}
+
+.button-dark,
+.button-light {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+footer {
+  background-color: var(--navbar-bg);
+  padding: 20px;
+  text-align: center;
+  color: var(--text-color);
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+footer a {
+  color: var(--link-color);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--highlight);
+}
+
+.bold-text {
+  font-weight: bold;
+  color: var(--bold-text-color);
+}
+
+.highlight {
+  color: var(--highlight);
+}
+
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 20px;
+}
+
+body.theme-dark .button-dark {
+  background-color: var(--highlight);
+}
+
+body.theme-dark .navbar {
+  background-color: var(--navbar-bg);
+  color: var(--text-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.theme-dark .card-dark {
+  background-color: #4a5568;
+  border-color: #9f7aea;
+}
+
+body.theme-dark .card-light {
+  background-color: #2d3748;
+  border-color: #2d3748;
+}
+
+section {
+  margin: 30px 0;
+}
+
+section h2 {
+  color: var(--highlight);
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+section p {
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+body.theme-dark .bold-text {
+  color: var(--button-bg);
+}
+
+body:not(.theme-dark) .bold-text {
+  color: var(--button-bg);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--background);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--text-color);
+} 
+
+::selection
+{
+  color: var(--background);
+  background-color: var(--foreground);
+}
+
+
