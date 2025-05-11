@@ -14,6 +14,7 @@ const ProjectsSection = () => {
     const fetchData = async () => {
       try {
         const baseUrl = process.env.NEXT_PUBLIC_WEBSITE_URL || "http://localhost:3000";
+        console.log("Base URL:", baseUrl);
         const response = await fetch(`${baseUrl}/api/projects`);
         const result = await response.json();
         setData(result.projects || []);
