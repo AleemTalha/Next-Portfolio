@@ -13,10 +13,6 @@ export const authOptions = {
     strategy: "jwt",
   },
 
-  jwt: {
-    secret: process.env.NEXTAUTH_SECRET,
-  },
-
   callbacks: {
     async jwt({ token, user, account, profile }) {
       if (account) {
@@ -46,7 +42,7 @@ export const authOptions = {
   },
 
   pages: {
-    error: "/auth/error",
+    error: "/",
   },
 
   secret: process.env.NEXTAUTH_SECRET,
