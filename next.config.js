@@ -7,13 +7,13 @@ const nextConfig = {
         hostname: 'res.cloudinary.com',
       },
     ],
-    formats: ['image/webp'], // SEO-friendly optimized images
+    formats: ['image/webp'],
   },
   reactStrictMode: true,
-  trailingSlash: true, // URLs with / at the end are better for SEO consistency
-  output: 'standalone', // required for Vercel and better deployment
+  trailingSlash: true,
+  output: 'standalone',
   experimental: {
-    serverActions: true, // if you use server actions
+    serverActions: {},
   },
   headers: async () => [
     {
