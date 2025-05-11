@@ -1,44 +1,27 @@
 import ClientWrapper from "@/components/ClientWrapper";
 import TypingEffect from "@/components/typer/typer";
 import ScrollButton from "@/components/ScrollButton";
-import Organogram from "@/components/Organogram"; // Import the new client-side button component
+import Organogram from "@/components/Organogram";
+import { siteConfig } from "@/app/metadata.config";
 
 export const metadata = {
-  title: "Home | Aleem T.Dev Full Stack Developer (ReactJS & NextJS)",
-  description:
-    "Professional Full Stack Developer specializing in ReactJS, NextJS, Node.js, and MongoDB. Delivering cutting-edge web solutions, scalable apps, and responsive UI/UX designs.",
-  keywords: [
-    "Talha Aleem",
-    "Aleem T.Dev",
-    "Full Stack Developer",
-    "ReactJS Developer",
-    "NextJS Developer",
-    "Frontend Developer",
-    "Backend Developer",
-    "MERN Stack Developer",
-    "Web Developer Portfolio",
-    "Node.js Developer",
-    "MongoDB Developer",
-    "JavaScript Expert",
-    "Modern Web Development",
-    "Responsive Web Design",
-    "Professional Portfolio",
-  ],
-  authors: [{ name: "Talha Aleem", url: "https://yourwebsite.com" }],
-  creator: "Talha Aleem",
-  publisher: "Talha Aleem",
+  title: `${siteConfig.author} | Home – Full Stack Developer`,
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  authors: [{ name: siteConfig.author, url: siteConfig.siteUrl }],
+  creator: siteConfig.author,
+  publisher: siteConfig.author,
   openGraph: {
-    title: "Talha Aleem | Full Stack Developer Portfolio",
-    description:
-      "Explore the portfolio of Talha Aleem (Aleem T.Dev), a professional full stack developer crafting modern, scalable apps using React, Next.js, Node.js, and MongoDB.",
-    url: "https://yourwebsite.com",
-    siteName: "Talha Aleem - Developer Portfolio",
+    title: `${siteConfig.author} | Full Stack Web Developer`,
+    description: siteConfig.openGraphDescription,
+    url: siteConfig.siteUrl,
+    siteName: `${siteConfig.author} - Developer Portfolio`,
     images: [
       {
-        url: "https://yourwebsite.com/og-portfolio-image.jpg",
+        url: `${siteConfig.siteUrl}/og-portfolio-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "Talha Aleem - Web Developer Portfolio Preview",
+        alt: `${siteConfig.author} - Portfolio Preview`,
       },
     ],
     locale: "en_US",
@@ -46,17 +29,18 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Talha Aleem | React & NextJS Developer Portfolio",
-    description:
-      "Discover Talha Aleem's full stack development work, featuring projects built with ReactJS, NextJS, Node.js, and modern web technologies.",
-    site: "@yourtwitterhandle",
-    creator: "@yourtwitterhandle",
-    images: ["https://yourwebsite.com/og-portfolio-image.jpg"],
+    title: `${siteConfig.author} | Developer Portfolio`,
+    description: siteConfig.twitterDescription,
+    site: siteConfig.twitterHandle,
+    creator: siteConfig.twitterHandle,
+    images: [`${siteConfig.siteUrl}/og-portfolio-image.jpg`],
   },
   icons: {
-    icon: "/ico.png", // External favicon
+    icon: "/icon.png",
   },
 };
+
+
 
 export default function HomePage() {
   return (
@@ -89,7 +73,10 @@ export default function HomePage() {
         </div>
       </main>
 
-      <section className="bg-[var(--background)] py-12 w-full d-flex justify-center">
+      <section
+        className="bg-[var(--background)] py-12 w-full d-flex justify-center"
+        id="about"
+      >
         <div className="min-w-[90vw] px-4">
           <div className="text-2xl md:text-3xl font-bold text-[var(--foreground)] text-center mb-8">
             Portfolio Highlights
@@ -248,6 +235,53 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      {/* About Section */}
+      <div className="flex justify-center items-center">
+        <section className="py-12 max-w-[90vw] min-w-[90vw] rounded-xl border border-[var(--foreground)] mx-auto bg-[var(--card-bg)]">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-[var(--bold-text-color)] mb-4">
+              About Me
+            </h2>
+            <p className="text-[var(--text-color)] text-lg">
+              I am Talha Aleem, a passionate full-stack web developer with a
+              strong focus on building modern, scalable, and user-friendly web
+              applications. With expertise in React, Node.js, and MongoDB, I
+              strive to deliver clean and efficient code that solves real-world
+              problems.
+            </p>
+          </div>
+        </section>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundImage: "url('/images/carousel-1.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+          position: "relative",
+          minHeight: "50vh",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "var(--background)",
+            opacity: 0.7,
+            zIndex: 1,
+          }}
+        />
+        <div style={{ position: "relative", zIndex: 2 }}>
+          {/* Tumhara content yahan aayega */}
+        </div>
+      </div>
+
       <Organogram />
     </ClientWrapper>
   );

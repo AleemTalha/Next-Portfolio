@@ -1,9 +1,8 @@
 import { Raleway } from "next/font/google";
 import Cursor from "@/components/cursor";
 import ProgressBar from "@/components/ProgressBar";
+import { toast, ToastContainer } from "react-toastify";
 import Providers from "./providers";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/footer";
 import "./globals.css";
 
 const raleway = Raleway({
@@ -13,9 +12,8 @@ const raleway = Raleway({
 });
 
 export const metadata = {
-  title: "Talha Aleem | Full-Stack Web Developer",
-  description:
-    "Talha Aleem is a full-stack developer focused on building scalable, user-centric applications with React, Next.js, and Node.js.",
+  title: "Talha Aleem - Portfolio",
+  description: "Full Stack Developer Portfolio",
   keywords:
     "Talha Aleem, Full-Stack Developer, React Developer, Next.js Developer, MongoDB, JavaScript, Web Development Portfolio, Pakistan Developer",
   authors: [{ name: "Talha Aleem", url: "https://aleemtdev.vercel.app" }],
@@ -47,7 +45,7 @@ export const metadata = {
   metadataBase: new URL("https://aleemtdev.vercel.app"),
   robots: "index, follow",
   icons: {
-    icon: "/icon.png"
+    icon: "/favicon.ico",
   },
 };
 
@@ -70,11 +68,9 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`${raleway.variable} antialiased`}>
         <Providers>
-          <Navbar />
           <ProgressBar />
           <Cursor />
           {children}
-          <Footer />
         </Providers>
       </body>
     </html>

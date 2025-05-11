@@ -8,33 +8,49 @@ export const authOptions = {
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
     }),
   ],
+
   session: {
-    strategy: "jwt", // Use JWT for session management
+    strategy: "jwt",
   },
+
   jwt: {
-    secret: process.env.NEXTAUTH_SECRET, // Secret for signing the JWT
+    secret: process.env.NEXTAUTH_SECRET,
   },
+
   callbacks: {
-    async jwt({ token, user, account }) {
-      // Add user or account information to the token
+    async jwt({ token, user, account, profile }) {
       if (account) {
         token.accessToken = account.access_token;
       }
+
       if (user) {
+        const userEmail = user.email?.trim().toLowerCase();
+        const adminEmail = process.env.ADMIN_EMAIL?.trim().toLowerCase();
+
+        token.email = userEmail;
         token.id = user.id;
+        token.role = userEmail === adminEmail ? "admin" : "user";
       }
+
       return token;
     },
+
     async session({ session, token }) {
-      // Add token information to the session
       session.user.id = token.id;
+      session.user.role = token.role;
+      session.user.email = token.email;
       session.accessToken = token.accessToken;
+
       return session;
     },
   },
-  secret: process.env.NEXTAUTH_SECRET, // Ensure the secret is set
+
+  pages: {
+    error: "/auth/error",
+  },
+
+  secret: process.env.NEXTAUTH_SECRET,
 };
 
 const handler = NextAuth(authOptions);
-
 export { handler as GET, handler as POST };

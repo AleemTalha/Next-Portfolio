@@ -1,0 +1,11 @@
+# robots.txt for https://yourdomain.com
+
+User-agent: *
+Disallow: /api/       # APIs ko crawl nahi karna
+Disallow: /admin/     # Admin page ko crawl nahi karna
+Disallow: /private/   # Private areas ko crawl nahi karna
+
+# Allow all other pages
+Allow: /
+
+Sitemap: https://yourdomain.com/sitemap.xml  # Sitemap ka URL

@@ -45,9 +45,7 @@ const Cursor = () => {
     window.addEventListener("mousemove", move);
     window.addEventListener("mouseover", handleMouseOver);
     window.addEventListener("mouseout", handleMouseOut);
-
     updateVisibility();
-
     return () => {
       window.removeEventListener("resize", updateVisibility);
       window.removeEventListener("mousemove", move);
@@ -72,10 +70,10 @@ const Cursor = () => {
 
   const ringStyle = {
     position: "fixed",
-    top: hovering ? position.y - 25 : position.y - 13,
-    left: hovering ? position.x - 25 : position.x - 13,
-    width: hovering ? "50px" : "26px",
-    height: hovering ? "50px" : "26px",
+    top: hovering ? position.y - 15 : position.y - 13,
+    left: hovering ? position.x - 15 : position.x - 13,
+    width: hovering ? "33px" : "26px",
+    height: hovering ? "33px" : "26px",
     backgroundColor: hovering
       ? darkMode
         ? "rgba(255, 255, 255, 0.6)"
@@ -83,11 +81,11 @@ const Cursor = () => {
       : darkMode
       ? "rgba(255, 255, 255, 0.3)"
       : "rgba(0, 0, 0, 0.3)",
-    border: hovering ? "none" : `1px solid ${darkMode ? "#000" : "#fff"}`,
+    border: hovering ? "1px solid var(--background)" : `1px solid ${darkMode ? "#000" : "#fff"}`,
     borderRadius: "50%",
     pointerEvents: "none",
     zIndex: 9998,
-    transition: "width 150ms ease, height 150ms ease, background-color 150ms ease",
+    transition: "width 200ms ease, height 200ms ease, background-color 150ms ease",
   };
 
   return (

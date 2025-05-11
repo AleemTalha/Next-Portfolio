@@ -1,37 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
 :root {
-  --background: #f3f6fa;        /* Soft bluish white */
-  --foreground: #101820;        /* Deep charcoal text */
-  --navbar-bg: #d6e4f0;         /* Light steel blue */
-  --button-bg: #004e64;         /* Dark teal */
-  --button-text: #ffffff;       /* Always white */
-  --text-color: #1b2a3a;        /* Rich navy slate */
- --bold-text-color: #002022;  /* Google Blue for highlights */
-  --card-bg: #ffffff;           /* Pure white cards */
-  --border-color: #b0c5d1;      /* Light steel blue border */
-  --highlight: #00152d;         /* Vivid bright blue */
-  --link-color: #003459;        /* Deep sea blue */
+  --background: #f3f6fa; /* Soft bluish white */
+  --foreground: #101820; /* Deep charcoal text */
+  --navbar-bg: #d6e4f0; /* Light steel blue */
+  --button-bg: #004e64; /* Dark teal */
+  --button-text: #ffffff; /* Always white */
+  --text-color: #1b2a3a; /* Rich navy slate */
+  --bold-text-color: #002022; /* Google Blue for highlights */
+  --card-bg: #ffffff; /* Pure white cards */
+  --border-color: #b0c5d1; /* Light steel blue border */
+  --highlight: #00152d; /* Vivid bright blue */
+  --link-color: #003459; /* Deep sea blue */
 }
 
 body.theme-dark {
-  --background: #0f1724;        /* Midnight navy */
-  --foreground: #e5edf5;        /* Frosty silver blue */
-  --navbar-bg: #1a2533;         /* Slightly lifted navy */
-  --button-bg: #00838f;         /* Cyan teal */
-  --button-text: #e0f7fa;       /* Aqua white */
-  --text-color: #b0bec5;        /* Soft cool gray */
-  --bold-text-color: #4dd0e1;   /* Light cyan accent */
-  --card-bg: #202a37;           /* Muted dark card */
-  --border-color: #334155;      /* Soft outline blue-gray */
-  --highlight: #6c6c6c;         /* Clean cyan */
-  --link-color: #ffffff;        /* Crisp white */
+  --background: #0f1724; /* Midnight navy */
+  --foreground: #e5edf5; /* Frosty silver blue */
+  --navbar-bg: #1a2533; /* Slightly lifted navy */
+  --button-bg: #00838f; /* Cyan teal */
+  --button-text: #e0f7fa; /* Aqua white */
+  --text-color: #b0bec5; /* Soft cool gray */
+  --bold-text-color: #4dd0e1; /* Light cyan accent */
+  --card-bg: #202a37; /* Muted dark card */
+  --border-color: #334155; /* Soft outline blue-gray */
+  --highlight: #6c6c6c; /* Clean cyan */
+  --link-color: #ffffff; /* Crisp white */
 }
 
+@tailwind utilities;
 
 * {
-  font-family: 'Raleway', sans-serif !important; /* Apply Raleway font to all elements */
+  font-family: "Raleway", sans-serif !important; /* Apply Raleway font to all elements */
   cursor: none;
 }
 
@@ -39,12 +40,20 @@ body {
   background: var(--background);
   color: var(--text-color);
   margin: 0;
+  transition: color 1s ease, background 1s ease !important;
   padding: 0;
   cursor: none;
 }
 
-h1, h2, h3, h4, p, a, button, span {
-  font-family: 'Raleway', sans-serif; /* Ensure consistency across all text elements */
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+button,
+span {
+  font-family: "Raleway", sans-serif; /* Ensure consistency across all text elements */
 }
 
 a {
@@ -189,12 +198,28 @@ body:not(.theme-dark) .bold-text {
 }
 ::-webkit-scrollbar-track {
   background: var(--text-color);
-} 
+}
 
-::selection
-{
+::selection {
   color: var(--background);
   background-color: var(--foreground);
 }
 
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-color);
+  /* text-stroke: 1px var(--text-color);*/
+}
 
+@layer base {
+  * {
+    @apply transition-colors duration-300;
+  }
+}
+
+.scroll-down-animation {
+  transition: transform 0.3s ease;
+}
+.scroll-down-animation:hover {
+  transform: scale(1.1);
+}

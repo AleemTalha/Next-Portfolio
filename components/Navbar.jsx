@@ -1,11 +1,11 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
-import { useSession, signOut } from "next-auth/react";
+import { useState, useRef, useEffect, useMemo } from "react";
+import Image from "next/image";
+import { useSession, signOut, getSession } from "next-auth/react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FaHome,
-  FaUser,
   FaLayerGroup,
   FaBook,
   FaFileAlt,
@@ -23,6 +23,8 @@ import {
 import { useTheme } from "../context/ThemeContext";
 import ProgressBar from "./ProgressBar";
 
+let cachedSession = null; // Global variable to cache session data
+
 export default function Navbar() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [showSkillsDropdown, setShowSkillsDropdown] = useState(false);
@@ -31,7 +33,9 @@ export default function Navbar() {
   const navRef = useRef(null);
   const skillsDropdownRef = useRef(null);
   const accountDropdownRef = useRef(null);
-  const { data: session, status } = useSession();
+  const [session, setSession] = useState(cachedSession);
+  const [status, setStatus] = useState(cachedSession ? "authenticated" : "loading");
+
   const { darkMode, setDarkMode } = useTheme();
 
   const toggleTheme = () => {
@@ -64,15 +68,64 @@ export default function Navbar() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+  useEffect(() => {
+    const fetchSession = async () => {
+      if (!cachedSession) {
+        const sessionData = await getSession();
+        cachedSession = sessionData; // Cache the session globally
+        setSession(sessionData);
+        setStatus(sessionData ? "authenticated" : "unauthenticated");
+      } else {
+        setSession(cachedSession);
+        setStatus(cachedSession ? "authenticated" : "unauthenticated");
+      }
+    };
+
+    fetchSession();
+  }, []); // Fetch session only once on component mount
 
   const handleNavLinkClick = () => {
     setSidebarOpen(false);
   };
 
+  const userContent = useMemo(() => {
+    if (session && session.user) {
+      return (
+        <div className="relative w-10 h-10 rounded-full border-2 border-[var(--border-color)] p-1" ref={accountDropdownRef}>
+          <button
+            onClick={() => setShowAccountDropdown(!showAccountDropdown)}
+            className="w-full h-full"
+          >
+            <img
+              src={session.user.image}
+              alt="user"
+              className="w-full h-full rounded-full"
+            />
+          </button>
+          {showAccountDropdown && (
+            <div className="absolute right-0 mt-2 w-48 bg-[var(--card-bg)] text-[var(--text-color)] rounded shadow-md z-50">
+              <div className="p-4 border-b border-[var(--border-color)]">
+                <p className="font-bold">{session.user.name}</p>
+                <p className="text-sm text-gray-500">{session.user.email}</p>
+              </div>
+              <button
+                onClick={() => signOut()}
+                className="w-full px-4 py-2 text-left transition"
+              >
+                <FaSignOutAlt className="mr-2 inline" size={16} /> Sign out
+              </button>
+            </div>
+          )}
+        </div>
+      );
+    }
+    return null; // Show nothing if no user data is available
+  }, [session, showAccountDropdown]);
+
   const navLinks = [
     { name: "Home", icon: <FaHome size={18} />, href: "/" },
-    { name: "About", icon: <FaUser size={18} />, href: "/about" },
-    { name: "Projects", icon: <FaBook size={18} />, href: "/education" },
+    { name: "Projects", icon: <FaBook size={18} />, href: "/projects" },
+    { name: "Skills", icon: <FaLayerGroup size={18} />, href: "/skills" },
     { name: "Blogs", icon: <FaFileAlt size={18} />, href: "/blogs" },
     { name: "Contact", icon: <FaEnvelope size={18} />, href: "/contact" },
   ];
@@ -116,12 +169,12 @@ export default function Navbar() {
             className="text-[1.5rem] font-bold flex items-center gap-2"
             style={{ color: "var(--text-color)" }}
           >
-            <FaCode />
-            Aleem T.Dev
+            < Image width="50" height='50' src="/logo.png" alt="logo" />
+            Leem T.Dev
           </Link>
 
           <div className="hidden lg:flex justify-center items-center gap-6">
-            {navLinks.slice(0, 3).map((link) => (
+            {navLinks.slice(0, 2).map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
@@ -132,7 +185,7 @@ export default function Navbar() {
               </Link>
             ))}
 
-            <div className="relative" ref={skillsDropdownRef}>
+            {/* <div className="relative" ref={skillsDropdownRef}>
               <button
                 onClick={() => setShowSkillsDropdown(!showSkillsDropdown)}
                 className="flex items-center gap-2 hover:text-[var(--highlight)] transition text-base md:text-lg"
@@ -170,9 +223,9 @@ export default function Navbar() {
                   </ul>
                 </div>
               )}
-            </div>
+            </div> */}
 
-            {navLinks.slice(3).map((link) => (
+            {navLinks.slice(2).map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
@@ -185,64 +238,7 @@ export default function Navbar() {
           </div>
 
           <div className="hidden lg:flex items-center gap-4">
-            {status === "loading" ? null : (
-              <>
-                {!session && (
-                  <div className="relative" ref={accountDropdownRef}>
-                    <CustomButton
-                      onClick={() => setShowAccountDropdown(!showAccountDropdown)}
-                    >
-                      Get Started
-                    </CustomButton>
-                    {showAccountDropdown && (
-                      <div className="absolute right-0 mt-2 w-48 bg-[var(--card-bg)] text-[var(--text-color)] rounded shadow-md z-50">
-                        <ul className="p-4">
-                          <Link href="/login">
-                            <button className="w-full px-4 py-2 text-left transition">
-                              <FaSignInAlt className="mr-2 inline" size={16} /> Login
-                            </button>
-                          </Link>
-                          <Link href="/signup">
-                            <button className="w-full px-4 py-2 text-left transition">
-                              <FaUserPlus className="mr-2 inline" size={16} /> Signup
-                            </button>
-                          </Link>
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {session && (
-                  <div className="relative" ref={accountDropdownRef}>
-                    <button
-                      onClick={() => setShowAccountDropdown(!showAccountDropdown)}
-                      className="w-10 h-10 rounded-full border-2 border-[var(--border-color)] p-1"
-                    >
-                      <img
-                        src={session.user.image}
-                        alt="user"
-                        className="w-full h-full rounded-full"
-                      />
-                    </button>
-                    {showAccountDropdown && (
-                      <div className="absolute right-0 mt-2 w-48 bg-[var(--card-bg)] text-[var(--text-color)] rounded shadow-md z-50">
-                        <div className="p-4 border-b border-[var(--border-color)]">
-                          <p className="font-bold">{session.user.name}</p>
-                          <p className="text-sm text-gray-500">{session.user.email}</p>
-                        </div>
-                        <button
-                          onClick={() => signOut()}
-                          className="w-full px-4 py-2 text-left transition"
-                        >
-                          <FaSignOutAlt className="mr-2 inline" size={16} /> Sign out
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </>
-            )}
+            {userContent}
 
             <button
               onClick={toggleTheme}
@@ -285,7 +281,7 @@ export default function Navbar() {
                     key={link.name}
                     href={link.href}
                     onClick={handleNavLinkClick}
-                    className="flex items-center gap-2 hover:text-[var(--highlight)] transition text-base"
+                    className="flex items-center gap-2 hover:text-[var(--highlight)] transition"
                   >
                     {link.icon}
                     <span className="text-sm">{link.name}</span>

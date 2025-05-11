@@ -73,9 +73,15 @@ const Footer = () => {
           </h2>
           <ul className="space-y-2 text-sm text-left">
             <li className="flex items-center gap-2">
-              <FiMail className="text-[var(--highlight)]" />
-              aleemtalha.dev098@gmail.com
+              <FiMail className="text-[var(--text-color)]" />
+              <a
+                href="mailto:aleemtalha.dev098@gmail.com"
+                className="text-[var(--text-color)] font-normal hover:underline"
+              >
+                aleemtalha.dev098@gmail.com
+              </a>
             </li>
+
             <li className="flex items-center gap-2">
               <FiMapPin className="text-[var(--highlight)]" />
               Lahore, Pakistan
@@ -92,7 +98,7 @@ const Footer = () => {
             </li>
             <li className="flex items-center gap-2">
               <Link
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/aleem-talha-a275a72a6/"
                 target="_blank"
                 className="flex items-center gap-2 hover:text-[var(--link-color)]"
               >
