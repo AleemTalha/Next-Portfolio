@@ -13,7 +13,8 @@ const ProjectsSection = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/projects");
+        const baseUrl = process.env.NEXT_PUBLIC_WEBSITE_URL || "http://localhost:3000";
+        const response = await fetch(`${baseUrl}/api/projects`);
         const result = await response.json();
         setData(result.projects || []);
       } catch (error) {

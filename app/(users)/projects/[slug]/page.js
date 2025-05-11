@@ -5,7 +5,7 @@ import { siteConfig } from "@/app/metadata.config";
 export async function generateMetadata({ params }) {
   const { slug } = params;
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const baseUrl = process.env.NEXT_PUBLIC_WEBSITE_URL || "http://localhost:3000";
   const res = await fetch(`${baseUrl}/api/projects/${slug}`);
   const data = await res.json();
 
@@ -122,7 +122,7 @@ export async function generateMetadata({ params }) {
 
 const ProjectPage = async ({ params }) => {
   const { slug } = await params;
-  const res = await fetch(`http://localhost:3000/api/projects/${slug}`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_WEBSITE_URL || "localhost:3000"}/api/projects/${slug}`);
   const data = await res.json();
 
   if (!data.success) {
@@ -237,5 +237,6 @@ const ProjectPage = async ({ params }) => {
     </div>
   );
 };
+
 
 export default ProjectPage;

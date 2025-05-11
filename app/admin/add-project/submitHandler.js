@@ -4,7 +4,7 @@ import cloudinary from '@/config/cloudinary'
 import { Readable } from 'stream'
 import crypto from 'crypto'
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+const baseUrl = process.env.NEXT_PUBLIC_WEBSITE_URL || 'http://localhost:3000'
 
 const generateUniqueFileName = (originalName) => {
   const timestamp = Date.now()
