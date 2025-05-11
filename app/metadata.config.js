@@ -1,6 +1,6 @@
 export const siteConfig = {
   author: "Talha Aleem",
-  siteUrl: "https://your-site-url.com", // Replace with your actual site URL
+  siteUrl: "https://aleemtdev.vercel.app", // Replace with your actual site URL
   twitterHandle: "@TalhaAleem", // Your Twitter handle
 
   description:
