@@ -4,6 +4,7 @@ import ProgressBar from "@/components/ProgressBar";
 import { toast, ToastContainer } from "react-toastify";
 import Providers from "./providers";
 import "./globals.css";
+import SessionProviderWrapper from "@/components/sessionProvider";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -67,11 +68,13 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={`${raleway.variable} antialiased`}>
-        <Providers>
-          <ProgressBar />
-          <Cursor />
-          {children}
-        </Providers>
+        <SessionProviderWrapper>
+          <Providers>
+            <ProgressBar />
+            <Cursor />
+            {children}
+          </Providers>
+        </SessionProviderWrapper>
       </body>
     </html>
   );
