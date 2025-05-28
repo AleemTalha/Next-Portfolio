@@ -1,6 +1,7 @@
 import React from "react";
 import ProjectHero from "@/components/ProjectHero";
 import { siteConfig } from "@/app/metadata.config";
+import Head from "next/head";
 
 export const metadata = {
   title: `Projects | ${siteConfig.author} - Full Stack Developer (ReactJS, NextJS)`,
@@ -52,59 +53,90 @@ export const metadata = {
 const Page = () => {
   return (
     <div className="min-h-screen bg-[#f3f6fa]">
-      {/* SEO Structured Data for Projects Page */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "CollectionPage",
-            "name": `${siteConfig.author} Projects`,
-            "description": `A showcase of web development and full-stack projects by ${siteConfig.author} (Aleem Talha, Aleem T.dev).`,
-            "url": `${siteConfig.siteUrl}/projects`,
-            "mainEntity": {
-              "@type": "Person",
-              "name": siteConfig.author,
-              "url": siteConfig.siteUrl,
-            },
-            "breadcrumb": {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": siteConfig.siteUrl,
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Projects",
-                  "item": `${siteConfig.siteUrl}/projects`,
-                },
-              ],
-            },
-            "hasPart": [
-              {
-                "@type": "WebPage",
-                "name": "Projects Listing",
-                "url": `${siteConfig.siteUrl}/projects`
+      <Head>
+        <title>{`Projects | ${siteConfig.author} - Full Stack Developer (ReactJS, NextJS)`}</title>
+        <meta name="description" content={`Explore professional projects by ${siteConfig.author}, featuring ReactJS, NextJS, Node.js, MongoDB, Express, and modern web technologies.`} />
+        <meta name="keywords" content="Talha Aleem, Aleem Talha, Aleem T.Dev, Aleem T.dev, Aleem Talha Dev, Projects, Portfolio Projects, Web Projects, Full Stack Projects, React Projects, Next.js Projects, Node.js Projects, MongoDB Projects, Frontend Projects, Backend Projects, Project Gallery, Project Showcase, Project Page, Portfolio Page, Blogs, Contact, About" />
+        <meta name="author" content={siteConfig.author} />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <link rel="canonical" href={`${siteConfig.siteUrl}/projects`} />
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content={`${siteConfig.author} | Projects - Full Stack Developer`} />
+        <meta property="og:description" content={`Browse the projects of ${siteConfig.author} (Aleem T.Dev), including modern web apps, scalable solutions, and full stack development.`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${siteConfig.siteUrl}/projects`} />
+        <meta property="og:site_name" content={`${siteConfig.author} Projects`} />
+        <meta property="og:image" content={`${siteConfig.siteUrl}/og-projects-image.jpg`} />
+        <meta property="og:image:alt" content={`${siteConfig.author} - Projects`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content="en_US" />
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${siteConfig.author} | Projects - Web Developer`} />
+        <meta name="twitter:description" content={`Projects by ${siteConfig.author}, featuring React, Next.js, Node.js, and MongoDB apps.`} />
+        <meta name="twitter:image" content={`${siteConfig.siteUrl}/og-projects-image.jpg`} />
+        <meta name="twitter:creator" content={siteConfig.twitterHandle} />
+        {/* Navigation links for SEO */}
+        <link rel="index" href={siteConfig.siteUrl + "/"} />
+        <link rel="about" href={siteConfig.siteUrl + "/about"} />
+        <link rel="projects" href={siteConfig.siteUrl + "/projects"} />
+        <link rel="contact" href={siteConfig.siteUrl + "/contact"} />
+        <link rel="blog" href={siteConfig.siteUrl + "/blogs"} />
+        {/* Structured Data for Projects Page */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "CollectionPage",
+              "name": `${siteConfig.author} Projects`,
+              "description": `A showcase of web development and full-stack projects by ${siteConfig.author} (Aleem Talha, Aleem T.dev).`,
+              "url": `${siteConfig.siteUrl}/projects`,
+              "mainEntity": {
+                "@type": "Person",
+                "name": siteConfig.author,
+                "url": siteConfig.siteUrl,
               },
-              {
-                "@type": "WebPage",
-                "name": "Project Details",
-                "url": `${siteConfig.siteUrl}/projects/{slug}`,
-                "potentialAction": {
-                  "@type": "ReadAction",
-                  "target": [
-                    `${siteConfig.siteUrl}/projects/{slug}`
-                  ]
+              "breadcrumb": {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": siteConfig.siteUrl,
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Projects",
+                    "item": `${siteConfig.siteUrl}/projects`,
+                  },
+                ],
+              },
+              "hasPart": [
+                {
+                  "@type": "WebPage",
+                  "name": "Projects Listing",
+                  "url": `${siteConfig.siteUrl}/projects`
+                },
+                {
+                  "@type": "WebPage",
+                  "name": "Project Details",
+                  "url": `${siteConfig.siteUrl}/projects/{slug}`,
+                  "potentialAction": {
+                    "@type": "ReadAction",
+                    "target": [
+                      `${siteConfig.siteUrl}/projects/{slug}`
+                    ]
+                  }
                 }
-              }
-            ]
-          }),
-        }}
-      />
+              ]
+            }),
+          }}
+        />
+      </Head>
       <ProjectHero />
     </div>
   );
