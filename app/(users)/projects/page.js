@@ -52,10 +52,62 @@ export const metadata = {
 const Page = () => {
   return (
     <div className="min-h-screen bg-[#f3f6fa]">
+      {/* SEO Structured Data for Projects Page */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": `${siteConfig.author} Projects`,
+            "description": `A showcase of web development and full-stack projects by ${siteConfig.author} (Aleem Talha, Aleem T.dev).`,
+            "url": `${siteConfig.siteUrl}/projects`,
+            "mainEntity": {
+              "@type": "Person",
+              "name": siteConfig.author,
+              "url": siteConfig.siteUrl,
+            },
+            "breadcrumb": {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": siteConfig.siteUrl,
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Projects",
+                  "item": `${siteConfig.siteUrl}/projects`,
+                },
+              ],
+            },
+            "hasPart": [
+              {
+                "@type": "WebPage",
+                "name": "Projects Listing",
+                "url": `${siteConfig.siteUrl}/projects`
+              },
+              {
+                "@type": "WebPage",
+                "name": "Project Details",
+                "url": `${siteConfig.siteUrl}/projects/{slug}`,
+                "potentialAction": {
+                  "@type": "ReadAction",
+                  "target": [
+                    `${siteConfig.siteUrl}/projects/{slug}`
+                  ]
+                }
+              }
+            ]
+          }),
+        }}
+      />
       <ProjectHero />
     </div>
   );
-  a;
 };
 
 export default Page;
