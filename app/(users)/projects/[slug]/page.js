@@ -219,7 +219,7 @@ const ProjectPage = async ({ params }) => {
                 href={project.repository}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gray-700 hover:bg-gray-800 text-white font-medium px-5 py-2 rounded transition"
+                className="z hover:bg-gray-800 text-white font-medium px-5 py-2 rounded transition"
               >
                 View Repository
               </a>

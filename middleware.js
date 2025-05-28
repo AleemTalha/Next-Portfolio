@@ -5,10 +5,10 @@ export async function middleware(req) {
   try {
     const pathname = req.nextUrl?.pathname || "";
     const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-
     // Admin route protection
     if (pathname.startsWith("/admin")) {
       if (!token) {
+        console.log("No token found, redirecting to login");
         return NextResponse.rewrite(new URL("/404", req.url));
       }
 

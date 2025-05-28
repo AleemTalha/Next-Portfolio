@@ -55,6 +55,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="seobility" content="dfbdd208f18174fa0677f384fd03aa1b" />
         <link rel="canonical" href="https://aleemtdev.vercel.app" />
         <script
           dangerouslySetInnerHTML={{

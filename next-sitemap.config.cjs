@@ -1,5 +1,5 @@
-module.exports = {
-  siteUrl: "https://aleemtdev.vercel.app",
+const sitemapConfig = {
+  siteUrl:  'https://aleemtdev.vercel.app',
   generateRobotsTxt: true,
   changefreq: "weekly",
   priority: 0.7,
@@ -18,3 +18,5 @@ module.exports = {
     ],
   },
 };
+
+export default sitemapConfig;

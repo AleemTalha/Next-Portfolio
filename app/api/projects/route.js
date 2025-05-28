@@ -10,7 +10,7 @@ export async function GET(request) {
     const page = parseInt(searchParams.get("page") || "1");
     const limit = 10;
     const skip = (page - 1) * limit;
-
+    console.log("Working there")
     const [projects, total] = await Promise.all([
       projectModel.find({}).skip(skip).limit(limit).lean(),
       projectModel.countDocuments()
