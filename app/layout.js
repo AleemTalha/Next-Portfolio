@@ -5,6 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import Providers from "./providers";
 import "./globals.css";
 import SessionProviderWrapper from "@/components/sessionProvider";
+import { headers } from "next/headers";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -51,6 +52,9 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const pathname = headers().get('x-next-url') || '/';
+  const canonical = `https://aleemtdev.vercel.app${pathname === '/' ? '' : pathname}`;
+
   return (
     <html lang="en">
       <head>
@@ -68,7 +72,7 @@ export default function RootLayout({ children }) {
         />
         <meta name="author" content="Talha Aleem, Aleem Talha, Aleem T Dev, Aleem T.dev, Aleem Talha Dev" />
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-        <link rel="canonical" href="https://aleemtdev.vercel.app" />
+        <link rel="canonical" href={canonical} />
         <link rel="icon" href="/favicon.ico" />
         {/* Main site navigation links for SEO */}
         <link rel="index" href="https://aleemtdev.vercel.app/" />

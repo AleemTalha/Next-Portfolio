@@ -1,7 +1,7 @@
 export const siteConfig = {
-  author: "Talha Aleem",
+  author: "Aleem T.Dev",
   siteUrl: "https://aleemtdev.vercel.app", // Replace with your actual site URL
-  twitterHandle: "@TalhaAleem", // Your Twitter handle
+  twitterHandle: "@Aleem T.Dev", // Your Twitter handle
 
   description:
     "Welcome to the portfolio of Talha Aleem a.k.a Aleem T.Dev — a passionate full stack web developer crafting modern digital experiences with ReactJS, NextJS, Node.js, and MongoDB.",
