@@ -106,7 +106,7 @@ export default function RootLayout({ children }) {
         <meta property="og:see_also" content="https://www.facebook.com/share/1APJA1pbao/" />
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Talha Aleem | Aleem Talha | Aleem T Dev | Aleem T.dev | Aleem Talha Dev | Full-Stack Developer" />
+        <meta name="twitter:title" content="Aleem T.Dev | Mern Stack and Next.js Developer" />
         <meta
           name="twitter:description"
           content="Explore the professional web development portfolio of Talha Aleem (Aleem Talha, Aleem T Dev, Aleem T.dev, Aleem Talha Dev). See all projects, blogs, and contact details."
@@ -184,7 +184,7 @@ export default function RootLayout({ children }) {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "name": "Talha Aleem Portfolio",
+            "name": "Aleem T.Dev Portfolio",
             "url": "https://aleemtdev.vercel.app",
             "potentialAction": {
               "@type": "SearchAction",
@@ -201,7 +201,7 @@ export default function RootLayout({ children }) {
               {
                 "@type": "ListItem",
                 "position": 1,
-                "name": "Home",
+                "name": "Aleem T.Dev",
                 "item": "https://aleemtdev.vercel.app/"
               },
               {

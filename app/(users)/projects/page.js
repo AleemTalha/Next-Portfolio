@@ -56,10 +56,17 @@ const Page = () => {
       <Head>
         <title>{`Projects | ${siteConfig.author} - Full Stack Developer (ReactJS, NextJS)`}</title>
         <meta name="description" content={`Explore professional projects by ${siteConfig.author}, featuring ReactJS, NextJS, Node.js, MongoDB, Express, and modern web technologies.`} />
-        <meta name="keywords" content="Talha Aleem, Aleem Talha, Aleem T.Dev, Aleem T.dev, Aleem Talha Dev, Projects, Portfolio Projects, Web Projects, Full Stack Projects, React Projects, Next.js Projects, Node.js Projects, MongoDB Projects, Frontend Projects, Backend Projects, Project Gallery, Project Showcase, Project Page, Portfolio Page, Blogs, Contact, About" />
+        <meta name="keywords" content="Talha Aleem, Aleem Talha, Aleem T.Dev, Aleem T.dev, Aleem Talha Dev, Projects, Portfolio Projects, Web Projects, Full Stack Projects, React Projects, Next.js Projects, Node.js Projects, MongoDB Projects, Frontend Projects, Backend Projects, Project Gallery, Project Showcase, Project Page, Portfolio Page, Blogs, Contact, About, Aleem Talha Projects, Aleem T.Dev Projects, Aleem Talha Portfolio, Aleem T.Dev Portfolio, Aleem Talha Work, Aleem T.Dev Work" />
         <meta name="author" content={siteConfig.author} />
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <link rel="canonical" href={`${siteConfig.siteUrl}/projects`} />
+        {/* SEO links for search engines */}
+        <link rel="search" type="application/opensearchdescription+xml" title="Aleem T.Dev Projects Search" href={`${siteConfig.siteUrl}/projects`} />
+        <link rel="projects" href={`${siteConfig.siteUrl}/projects`} />
+        <link rel="projects" href={`${siteConfig.siteUrl}/projects/`} />
+        <link rel="projects" href={`${siteConfig.siteUrl}/projects?ref=seo`} />
+        <link rel="projects" href={`${siteConfig.siteUrl}/projects?utm_source=google`} />
+        <link rel="projects" href={`${siteConfig.siteUrl}/projects?utm_source=aleem-talha-projects`} />
         {/* Open Graph Meta Tags */}
         <meta property="og:title" content={`${siteConfig.author} | Projects - Full Stack Developer`} />
         <meta property="og:description" content={`Browse the projects of ${siteConfig.author} (Aleem T.Dev), including modern web apps, scalable solutions, and full stack development.`} />
@@ -91,11 +98,20 @@ const Page = () => {
               "@context": "https://schema.org",
               "@type": "CollectionPage",
               "name": `${siteConfig.author} Projects`,
+              "alternateName": [
+                "Aleem Talha Projects",
+                "Aleem T.Dev Projects",
+                "Aleem Talha Portfolio",
+                "Aleem T.Dev Portfolio",
+                "Aleem Talha Work",
+                "Aleem T.Dev Work"
+              ],
               "description": `A showcase of web development and full-stack projects by ${siteConfig.author} (Aleem Talha, Aleem T.dev).`,
               "url": `${siteConfig.siteUrl}/projects`,
               "mainEntity": {
                 "@type": "Person",
                 "name": siteConfig.author,
+                "alternateName": ["Aleem Talha", "Aleem T.Dev"],
                 "url": siteConfig.siteUrl,
               },
               "breadcrumb": {
@@ -132,6 +148,13 @@ const Page = () => {
                     ]
                   }
                 }
+              ],
+              "sameAs": [
+                `${siteConfig.siteUrl}/projects`,
+                `${siteConfig.siteUrl}/projects/`,
+                `${siteConfig.siteUrl}/projects?ref=seo`,
+                `${siteConfig.siteUrl}/projects?utm_source=google`,
+                `${siteConfig.siteUrl}/projects?utm_source=aleem-talha-projects`
               ]
             }),
           }}
