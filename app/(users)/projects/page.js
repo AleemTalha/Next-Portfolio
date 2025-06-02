@@ -55,7 +55,7 @@ const Page = () => {
     <div className="min-h-screen bg-[#f3f6fa]">
       <Head>
         <title>Aleem T.Dev Projects | Dive into Amazing projects made by Aleem</title>
-        <meta name="description" content={`Explore professional projects by Aleem T.Dev (Talha Aleem), featuring ReactJS, NextJS, Node.js, MongoDB, Express, and modern web technologies.`} />
+        <meta name="description" content={`Explore professional projects by Aleem T.Dev, featuring ReactJS, NextJS, Node.js, MongoDB, Express, and modern web technologies.`} />
         <meta name="keywords" content="Talha Aleem, Aleem Talha, Aleem T.Dev, Aleem T.dev, Aleem Talha Dev, Projects, Portfolio Projects, Web Projects, Full Stack Projects, React Projects, Next.js Projects, Node.js Projects, MongoDB Projects, Frontend Projects, Backend Projects, Project Gallery, Project Showcase, Project Page, Portfolio Page, Blogs, Contact, About, Aleem Talha Projects, Aleem T.Dev Projects, Aleem Talha Portfolio, Aleem T.Dev Portfolio, Aleem Talha Work, Aleem T.Dev Work" />
         <meta name="author" content={siteConfig.author} />
         <meta name="robots" content="index, follow" />
