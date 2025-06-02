@@ -1,11 +1,9 @@
 import { Raleway } from "next/font/google";
 import Cursor from "@/components/cursor";
 import ProgressBar from "@/components/ProgressBar";
-import { toast, ToastContainer } from "react-toastify";
 import Providers from "./providers";
 import "./globals.css";
 import SessionProviderWrapper from "@/components/sessionProvider";
-import { headers } from "next/headers";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -20,15 +18,68 @@ export const metadata = {
   },
   description:
     "A powerful platform for taxation, shopping, and business handling — all in one place.",
+  keywords: [
+    "Talha Aleem",
+    "Aleem T.Dev",
+    "Full Stack Developer",
+    "React Developer",
+    "Next.js Developer",
+    "Node.js Developer",
+    "Portfolio",
+    "Web Development",
+    "MERN Stack",
+    "JavaScript",
+    "MongoDB",
+    "Express",
+    "Pakistan Developer",
+  ],
+  authors: [{ name: "Talha Aleem", url: "https://aleemtalhadev.vercel.app" }],
+  creator: "Talha Aleem",
+  openGraph: {
+    title: "Aleem Talha | Full Stack Developer",
+    description:
+      "Explore the portfolio and skills of Talha Aleem, a full-stack developer specializing in React, Next.js, Node.js, and modern web technologies.",
+    url: "https://aleemtalhadev.vercel.app",
+    siteName: "Talha Aleem Portfolio",
+    images: [
+      {
+        url: "https://aleemtalhadev.vercel.app/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Talha Aleem Portfolio Preview",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
   twitter: {
     card: "summary_large_image",
+    title: "Aleem Talha | Full Stack Developer",
+    description:
+      "Explore the portfolio and skills of Talha Aleem, a full-stack developer specializing in React, Next.js, Node.js, and more.",
+    images: ["https://aleemtalhadev.vercel.app/og-image.jpg"],
+  },
+  metadataBase: new URL("https://aleemtalhadev.vercel.app"),
+  robots: "index, follow",
+  icons: {
+    icon: "/icon.png",
   },
 };
 
 export default function RootLayout({ children }) {
-
   return (
     <html lang="en">
+      <head>
+        <title>Aleem Talha | Full Stack Developer</title>
+        <meta name="description" content="Explore the portfolio and skills of Talha Aleem, a full-stack developer specializing in React, Next.js, Node.js, and modern web technologies." />
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="theme-color" content="#18181b" />
+        <link rel="icon" href="/icon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/icon.png" />
+        {/* These will be overridden by child pages if they export metadata */}
+      </head>
       <body className={`${raleway.variable} antialiased`}>
         <SessionProviderWrapper>
           <Providers>
