@@ -1,9 +1,12 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /api/
+Crawl-delay: 1
 
 # Host
-Host: https://aleemtdev.vercel.app
+Host: https://aleemtalhadev.vercel.app
 
 # Sitemaps
-Sitemap: https://aleemtdev.vercel.app/sitemap.xml
+Sitemap: https://aleemtalhadev.vercel.app/sitemap.xml

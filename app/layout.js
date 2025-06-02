@@ -83,7 +83,6 @@ export default function RootLayout({ children }) {
         />
         <link rel="canonical" href={canonical} />
         <link rel="icon" href="/favicon.ico" />
-        {/* Main site navigation links for SEO */}
         <link rel="index" href="https://aleemtdev.vercel.app/" />
         <link rel="about" href="https://aleemtdev.vercel.app/about" />
         <link rel="projects" href="https://aleemtdev.vercel.app/projects" />
@@ -99,14 +98,13 @@ export default function RootLayout({ children }) {
           property="og:alternate_title"
           content="Aleem Talha | Aleem T.dev | Portfolio"
         />
-        {/* Open Graph Meta Tags */}
         <meta
           property="og:title"
-          content="Talha Aleem | Aleem Talha | Aleem T Dev | Aleem T.dev | Aleem Talha Dev | Full-Stack Developer"
+          content="Aleem Talha  | Mern Stack & Next.js Developer"
         />
         <meta
           property="og:description"
-          content="Portfolio of Talha Aleem (Aleem Talha, Aleem T Dev, Aleem T.dev, Aleem Talha Dev) showcasing modern web development skills and full-stack projects. View all projects, blogs, and contact details."
+          content="Portfolio of Talha Aleem showcasing modern web development skills and full-stack projects. View all projects, blogs, and contact details."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://aleemtdev.vercel.app" />
@@ -330,6 +328,51 @@ export default function RootLayout({ children }) {
             <ProgressBar />
             <Cursor />
             {children}
+
+            {/* Hidden backlinks for SEO crawling */}
+            <div
+              style={{
+                position: "absolute",
+                left: "-9999px",
+                top: "-9999px",
+                visibility: "hidden",
+                fontSize: "1px",
+                color: "transparent",
+              }}
+            >
+              <nav aria-hidden="true">
+                <a href="https://aleemtalhadev.vercel.app/">
+                  Home - Talha Aleem Portfolio
+                </a>
+                <a href="https://aleemtalhadev.vercel.app/projects">
+                  Projects - Full Stack Development
+                </a>
+                <a href="https://aleemtalhadev.vercel.app/skills">
+                  Skills - React Next.js MongoDB
+                </a>
+                <a href="https://aleemtalhadev.vercel.app/blogs">
+                  Blogs - Web Development Articles
+                </a>
+                <a href="https://aleemtalhadev.vercel.app/contact">
+                  Contact - Hire Talha Aleem
+                </a>
+                <a href="https://aleemtalhadev.vercel.app/about">
+                  About - Aleem T.dev
+                </a>
+                <a href="mailto:aleemtalha098@gmail.com">Email Talha Aleem</a>
+                <a href="https://github.com/aleemtalha">GitHub Profile</a>
+                <a href="https://linkedin.com/in/aleemtdev">LinkedIn Profile</a>
+                <a href="https://aleemtalhadev.vercel.app/sitemap.xml">
+                  Sitemap
+                </a>
+                <a href="https://aleemtalhadev.vercel.app/robots.txt">Robots</a>
+                <span>Talha Aleem Full Stack Developer Portfolio</span>
+                <span>React Developer Next.js Expert MongoDB Specialist</span>
+                <span>Aleem T.dev Web Development Services</span>
+                <span>Pakistan Based Full Stack Developer</span>
+                <span>MERN Stack Developer Portfolio</span>
+              </nav>
+            </div>
           </Providers>
         </SessionProviderWrapper>
       </body>
