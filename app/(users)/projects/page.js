@@ -10,6 +10,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
   },
+  robots: "index, follow"
 };
 
 const Page = () => {
