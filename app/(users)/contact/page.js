@@ -10,42 +10,11 @@ import Image from "next/image";
 import { siteConfig } from "@/app/metadata.config";
 
 export const metadata = {
-  title: `Contact Me | ${siteConfig.author}`,
-  description:
-    "Reach out to Aleem T, a full stack web developer, for freelance projects, collaboration, or tech consultation in modern web technologies.",
-  openGraph: {
-    title: `Contact ${siteConfig.author} - Full Stack Web Developer`,
-    description:
-      "Connect with Aleem T for high-quality web development services, collaborations, or consultations.",
-    url: `${siteConfig.siteUrl}/contact`,
-    type: "website",
-    images: [siteConfig.defaultImage],
-  },
+  title: "Contact",
+  description: "Get in touch with Talha Aleem, Full Stack Developer. Let's discuss your project ideas and bring them to life with modern web technologies.",
   twitter: {
     card: "summary_large_image",
-    title: `Contact ${siteConfig.author}`,
-    description:
-      "Let’s build something great together. Get in touch for web projects or freelance opportunities.",
-    images: [siteConfig.defaultImage],
-    creator: siteConfig.twitterHandle,
   },
-  keywords: [
-    "contact full stack developer",
-    "hire react developer",
-    "freelance web developer",
-    "next.js developer contact",
-    "web development consultation",
-    "contact Aleem T",
-    "hire software engineer",
-    "frontend backend developer",
-    "remote developer Pakistan",
-    "portfolio contact page",
-    "tailwind react developer",
-    "Aleem T developer",
-    "developer email contact",
-    "freelance react nextjs",
-    siteConfig.author,
-  ],
 };
 
 const ContactPage = () => {
