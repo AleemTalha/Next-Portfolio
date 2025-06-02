@@ -3,6 +3,7 @@ import Cursor from "@/components/cursor";
 import ProgressBar from "@/components/ProgressBar";
 import Providers from "./providers";
 import "./globals.css";
+import Link from "next/link";
 import SessionProviderWrapper from "@/components/sessionProvider";
 
 const raleway = Raleway({
@@ -71,7 +72,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <title>Aleem Talha | Full Stack Developer</title>
-        <meta name="description" content="Explore the portfolio and skills of Talha Aleem, a full-stack developer specializing in React, Next.js, Node.js, and modern web technologies." />
+        <meta
+          name="description"
+          content="Explore the portfolio and skills of Talha Aleem, a full-stack developer specializing in React, Next.js, Node.js, and modern web technologies."
+        />
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -90,42 +94,37 @@ export default function RootLayout({ children }) {
               style={{
                 position: "absolute",
                 left: "-9999px",
-                top: "-9999px",
-                visibility: "hidden",
-                fontSize: "1px",
-                color: "transparent",
+                top: "0",
+                width: "1px",
+                height: "1px",
+                overflow: "hidden",
               }}
+              aria-hidden="true"
             >
-              <nav aria-hidden="true">
-                <a href="https://aleemtalhadev.vercel.app/">
-                  Home - Talha Aleem Portfolio
-                </a>
-                <a href="https://aleemtalhadev.vercel.app/about">
-                  About - Talha Aleem Full Stack Developer
-                </a>
-                <a href="https://aleemtalhadev.vercel.app/projects">
-                  Projects - Full Stack Development Portfolio
-                </a>
-                <a href="https://aleemtalhadev.vercel.app/skills">
-                  Skills - React Next.js MongoDB Expert
-                </a>
-                <a href="https://aleemtalhadev.vercel.app/blogs">
-                  Blogs - Web Development Articles
-                </a>
-                <a href="https://aleemtalhadev.vercel.app/contact">
-                  Contact - Hire Talha Aleem
-                </a>
-                <a href="https://aleemtalhadev.vercel.app/sitemap.xml">
-                  Sitemap
-                </a>
-                <a href="https://aleemtalhadev.vercel.app/robots.txt">Robots</a>
+              <nav>
+                <Link href="/">
+                  <a>Home - Talha Aleem Portfolio</a>
+                </Link>
+                <Link href="/about">
+                  <a>About - Talha Aleem Full Stack Developer</a>
+                </Link>
+                <Link href="/projects">
+                  <a>Projects - Full Stack Development Portfolio</a>
+                </Link>
+                <Link href="/skills">
+                  <a>Skills - React Next.js MongoDB Expert</a>
+                </Link>
+                <Link href="/blogs">
+                  <a>Blogs - Web Development Articles</a>
+                </Link>
+                <Link href="/contact">
+                  <a>Contact - Hire Talha Aleem</a>
+                </Link>
+                <a href="/sitemap.xml">Sitemap</a>
+                <a href="/robots.txt">Robots</a>
                 <a href="mailto:aleemtalha098@gmail.com">Email Talha Aleem</a>
                 <a href="https://github.com/aleemtalha">GitHub Profile</a>
                 <a href="https://linkedin.com/in/aleemtdev">LinkedIn Profile</a>
-                <span>Talha Aleem Full Stack Developer Portfolio</span>
-                <span>React Developer Next.js Expert MongoDB Specialist</span>
-                <span>MERN Stack Developer Portfolio</span>
-                <span>Web Development Services Pakistan</span>
               </nav>
             </div>
           </Providers>
