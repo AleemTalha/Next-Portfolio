@@ -59,13 +59,6 @@ const Page = () => {
 
   return (
     <>
-      <Head>
-        <title>Talha Aleem | Developer Skills</title>
-        <meta name="description" content="Explore Talha Aleem's tech stack – a passionate full-stack developer with hands-on experience in modern web development technologies." />
-        <meta name="keywords" content="Talha Aleem, Talha Aleeem, Talha Alim, Talha Aleam, Aleem Talha, Talhaa Aleem, full stack developer, React developer, Node.js expert, MongoDB, Next.js, Express.js, JavaScript, Tailwind, GSAP animations" />
-        <meta name="author" content="Talha Aleem" />
-      </Head>
-
       <div className="bg-[var(--background)]">
         <div
           ref={heroRef}
